@@ -35,12 +35,22 @@ cp .env.example .env
 # Copy-Item .env.example .env
 ```
 
+The first `uv sync` resolves compatible package versions and creates `uv.lock`. Commit that lockfile after setup so future installs can reproduce the resolved environment.
+
 Edit `.env` and set the provider, model ID, and matching API key. Never commit real credentials.
 
 Run the first example:
 
 ```bash
 uv run python -m langchain_learning.experiments.first_model
+```
+
+Run tests and linting:
+
+```bash
+uv run pytest
+uv run ruff check .
+uv run ruff format --check .
 ```
 
 ## Provider configuration
@@ -72,7 +82,6 @@ Model IDs, access, quotas, and free-tier terms can change. Confirm current avail
 ├── .env.example
 ├── .gitignore
 ├── pyproject.toml
-├── uv.lock
 ├── README.md
 ├── src/
 │   └── langchain_learning/
@@ -86,7 +95,9 @@ Model IDs, access, quotas, and free-tier terms can change. Confirm current avail
     └── test_config.py
 ```
 
-- `config.py`: reads local environment settings.
+After your first `uv sync`, `uv.lock` will also appear at the project root.
+
+- `config.py`: reads and validates provider/model settings.
 - `models.py`: one place to initialize a provider-backed chat model.
 - `experiments/`: small learning exercises, added in sequence.
 - `tests/`: fast tests that should not require paid API calls.
