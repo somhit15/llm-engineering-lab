@@ -5,9 +5,9 @@ from langchain_learning.models import get_chat_model
 
 def main() -> None:
     """Invoke the configured model and print its response."""
-    model = get_chat_model()
+    model = get_chat_model(temperature=1)
     response = model.invoke(
-        "Explain what LangChain is in three concise sentences."
+        "Invent a new holiday. Give it a name and describe how people celebrate it in three sentences"
     )
     print(response.content)
 

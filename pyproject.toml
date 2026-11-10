@@ -10,6 +10,7 @@ dependencies = [
     "langchain-nvidia-ai-endpoints",
     "python-dotenv",
     "pydantic>=2",
+    "ipython>=9.18.1",
 ]
 
 [dependency-groups]

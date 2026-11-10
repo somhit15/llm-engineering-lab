@@ -5,7 +5,7 @@ from langchain.chat_models import init_chat_model
 from langchain_learning.config import get_model_settings
 
 
-def get_chat_model():
+def get_chat_model(**kwargs):
     """Initialize the chat model selected by LC_PROVIDER and LC_MODEL.
 
     Required credentials are read from environment variables by the provider
@@ -15,5 +15,5 @@ def get_chat_model():
     return init_chat_model(
         settings.model,
         model_provider=settings.provider,
-        temperature=0,
+        **kwargs
     )

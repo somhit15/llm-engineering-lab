@@ -21,7 +21,7 @@ class ModelSettings:
 def get_model_settings() -> ModelSettings:
     """Return validated provider/model settings from the environment."""
     provider = os.getenv("LC_PROVIDER", "google_genai").strip().lower()
-    model = os.getenv("LC_MODEL", "gemini-2.5-flash").strip()
+    model = os.getenv("LC_MODEL", "gemini-3.5-flash-lite").strip()
 
     if provider not in SUPPORTED_PROVIDERS:
         supported = ", ".join(sorted(SUPPORTED_PROVIDERS))
